@@ -181,6 +181,53 @@ Forecast **air quality features** (pollutants + weather variables) using sequent
 * Expand **hyperparameter search space** (learning rate schedules, dropout values, optimizers).
 * Explore **deeper architectures** (multi-layer LSTM, GRU, or Transformer-based time-series models).
 
+## Sentiment Analysis using LSTM
+
+**Objective:**
+Perform **binary sentiment classification** on movie reviews from the **Stanford Large Movie Review Dataset**, predicting whether a review is **positive (1)** or **negative (0)** based on its text.
+
+**Dataset:**
+
+* Source: [Stanford Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/)
+* Total Reviews: **25,000**
+
+  * Positive: 12,500
+  * Negative: 12,500 (balanced dataset)
+* Preprocessing Notes:
+
+  * Some reviews contain **redundant HTML tags** that need to be cleaned.
+
+###  Model Architectures
+
+#### BaseLSTM
+
+* 3 **unidirectional LSTM layers**.
+* Embedding layer converts word indices into dense vectors.
+* **Dropout** applied after each LSTM layer for regularization.
+* Final hidden state passed through a **fully connected layer**.
+* **Sigmoid** activation for binary classification.
+
+#### ImprovedLSTM
+
+* Uses **3 bidirectional LSTM layers**, processing sequences forward and backward.
+* Embedding layer can use **pretrained word embeddings** for better initialization.
+* Dropout applied after each LSTM layer.
+* Final hidden state from the last bidirectional LSTM passed through a fully connected layer.
+* Sigmoid activation for binary classification.
+
+
+### Observations & Limitations
+
+* Slight improvement observed with **pretrained embeddings** and **bidirectional LSTMs**.
+* The current model is **not performing optimally**.
+* Improvements needed:
+
+  * Explore **different tokenizers** and pretrained embeddings.
+  * Conduct **extensive hyperparameter tuning** (learning rate, hidden size, dropout, batch size).
+  * Potentially experiment with **more advanced architectures** (e.g., attention-based LSTM or Transformer).
+
+
+
 
 
 
