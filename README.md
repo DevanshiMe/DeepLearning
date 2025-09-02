@@ -58,3 +58,52 @@ Use a **convolutional autoencoder** for detecting anomalies in time series data.
 * Deviations in reconstruction error signal anomalies.
 * Compact convolutional architecture makes it efficient for time series anomaly detection.
 
+## VGG-16 (Version C) vs ResNet-18 for Image Classification
+
+**Objective:**
+Implement and compare **VGG-16 (Version C)** and **ResNet-18** on a custom dataset, exploring the evolution from deep CNNs to residual networks. The task demonstrates how residual connections improve training stability and generalization.
+
+**Dataset:**
+
+* Total: **30,000 images**
+* 3 Classes: **Dogs, Food, Vehicles**
+* Ideal for **multi-class classification**
+
+**Baseline Goal:**
+
+* Accuracy > **75%** for base models
+* Accuracy > **80%** for improved models
+
+#### VGG-16 (Version C)
+
+* **Final Accuracy:** 89.4%
+* **Training Losses:**
+  `[0.0889, 0.0537, 0.0631, 0.0701, 0.0704, 0.0496, 0.0458, 0.0311, 0.0352, 0.0215]`
+* **Validation Losses:**
+  `[1.0225, 0.8865, 0.9923, 1.0166, 1.1482, 1.1022, 1.1557, 1.1291, 1.2872, 1.1538]`
+* **Training Accuracies:**
+  `[98.31, 98.87, 98.31, 97.19, 98.31, 98.31, 98.87, 99.43, 99.43, 98.87]`
+* **Validation Accuracies:**
+  `[80.1, 81.33, 82.95, 85.91, 84.06, 84.96, 84.14, 81.26, 89.4, 87.52]`
+
+#### ResNet-18
+
+* **Final Accuracy:** 89.89%
+* **Training Losses:**
+  `[0.4167, 0.4212, 0.4164, 0.3940, 0.3863, 0.3913, 0.3867, 0.3913, 0.3443, 0.3835]`
+* **Validation Losses:**
+  `[0.5373, 0.5344, 0.5454, 0.5620, 0.5827, 0.5475, 0.5502, 0.5428, 0.5450, 0.5462]`
+* **Training Accuracies:**
+  `[84.34, 80.97, 86.45, 83.84, 82.72, 81.22, 89.12, 81.14, 80.21, 83.27]`
+* **Validation Accuracies:**
+  `[80.01, 89.89, 82.74, 80.47, 85.1, 89.61, 88.1, 81.68, 84.23, 87.67]`
+
+
+### Insights
+
+* **VGG-16** achieves strong accuracy but shows higher **validation loss fluctuations**, suggesting overfitting due to its large parameter count.
+* **ResNet-18** maintains **more stable validation loss** and achieves slightly better final accuracy by leveraging **residual connections** that improve gradient flow.
+* This project highlights the **transition from plain deep CNNs to residual architectures**, demonstrating why ResNets became state-of-the-art.
+
+
+
