@@ -127,7 +127,7 @@ Experimentally demonstrate the **vanishing gradient problem** in very deep convo
   * Layer 3: `10⁻⁸` → **100× smaller** than Layer 15: `10⁻⁶`
   * Layer 27: `10⁻⁴` → **100× smaller** than Layer 38: `10⁻²`
 
-➡️ These results clearly show the **vanishing gradient effect** as depth increases.
+These results clearly show the **vanishing gradient effect** as depth increases.
 
 * **ResNet Comparison**
 
@@ -139,6 +139,48 @@ Experimentally demonstrate the **vanishing gradient problem** in very deep convo
 * **VGG-Deep** struggles with vanishing gradients, causing poor convergence in very deep setups.
 * **ResNet** overcomes this by allowing gradients to **flow directly** through skip connections.
 * This experiment highlights **why ResNets became the foundation** for modern deep learning architectures.
+
+
+## Time-Series Forecasting with LSTM
+
+**Objective:**
+Forecast **air quality features** (pollutants + weather variables) using sequential modeling with LSTM, capturing temporal dependencies and feature correlations.
+
+
+### Dataset Characteristics
+
+* Hourly **air quality data**, including pollutant concentrations (CO, NOx, etc.) and weather variables (temperature, humidity).
+* **Autocorrelation analysis** shows pollutants depend on past values.
+* **Correlation matrix** reveals strong dependencies between pollutants and weather conditions, indicating interrelated dynamics.
+
+
+### Model Architecture
+
+* **Single-layer LSTM** with **64 hidden units**.
+* Predicts **13 air quality features** simultaneously.
+* Uses **ReLU activation** and **dropout** to reduce overfitting.
+* Requires careful **hyperparameter tuning** for best performance.
+
+
+### Results
+
+* **Best R²:** 76.16% → model explains a substantial portion of variance.
+* **Learning Rate:** Decreasing from `0.01 → 0.001` improved R² from **0.6191 → 0.7616**.
+* **Bidirectional LSTM:** Enabled → R² improved from **0.6885 → 0.7616**.
+* **Hidden size/Iterations:** Increasing them alone did **not guarantee improvements**.
+
+
+### Limitations
+
+* Limited hyperparameter tuning → may have missed optimal configurations.
+* Model is only **single-layer LSTM**, limiting its ability to capture more **complex temporal dependencies**.
+
+
+### Improvements
+
+* Expand **hyperparameter search space** (learning rate schedules, dropout values, optimizers).
+* Explore **deeper architectures** (multi-layer LSTM, GRU, or Transformer-based time-series models).
+
 
 
 
