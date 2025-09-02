@@ -227,6 +227,50 @@ Perform **binary sentiment classification** on movie reviews from the **Stanford
   * Potentially experiment with **more advanced architectures** (e.g., attention-based LSTM or Transformer).
 
 
+## Transfer Learning with Pre-trained Models
+
+**Objective:**
+Leverage **pre-trained CNN models** for image classification on the **Food-11 dataset** and compare their performance.
+
+**Dataset:**
+
+* **Food-11 image dataset**
+* Multi-class classification problem
+
+### Models Evaluated
+
+1. **EfficientNet-B0**
+
+   * Accuracy: **90.43%**
+   * Efficient scaling balances depth, width, and resolution
+   * Computationally efficient but slightly less capable of capturing intricate features due to its smaller depth
+
+2. **MobileNetV3 Large**
+
+   * Accuracy: **90.55%**
+   * Uses **depthwise separable convolutions**, reducing parameters and computation
+   * Slightly lower accuracy because of limited depth for complex feature learning
+
+3. **ResNet-50**
+
+   * Accuracy: **92.15% (validation)**, **93.6% (testing)**
+   * Deep architecture with **residual connections**
+   * Learns complex hierarchical features efficiently
+   * Avoids vanishing gradient problem, making it suitable for challenging datasets
+
+
+### Observations
+
+* All models performed well, with **ResNet-50 achieving the best accuracy**.
+* Slight differences in performance are explained by:
+
+  * Depth and architectural complexity
+  * Ability to capture hierarchical and intricate features
+  * Residual connections facilitating better gradient flow
+
+
+
+
 
 
 
