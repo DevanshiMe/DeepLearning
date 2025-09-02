@@ -105,5 +105,40 @@ Implement and compare **VGG-16 (Version C)** and **ResNet-18** on a custom datas
 * **ResNet-18** maintains **more stable validation loss** and achieves slightly better final accuracy by leveraging **residual connections** that improve gradient flow.
 * This project highlights the **transition from plain deep CNNs to residual architectures**, demonstrating why ResNets became state-of-the-art.
 
+## Vanishing Gradient Problem in Deep CNNs
+
+**Objective:**
+Experimentally demonstrate the **vanishing gradient problem** in very deep convolutional networks (e.g., VGG-Deep) and understand how **ResNet’s residual connections** mitigate it.
+
+### Observations
+
+1. In **very deep networks** like VGG-Deep, **gradients vanish**, making training increasingly difficult.
+2. **ResNet** introduces **residual (skip) connections**, allowing gradients to **bypass layers** and flow more easily.
+
+   * This stabilizes training
+   * Prevents vanishing gradients
+   * Enables deeper architectures to converge effectively
+
+
+### Experimental Results
+
+* **Gradient Norms in VGG-Deep**
+
+  * Layer 3: `10⁻⁸` → **100× smaller** than Layer 15: `10⁻⁶`
+  * Layer 27: `10⁻⁴` → **100× smaller** than Layer 38: `10⁻²`
+
+➡️ These results clearly show the **vanishing gradient effect** as depth increases.
+
+* **ResNet Comparison**
+
+  * Residual connections significantly improved **gradient propagation**.
+  * Training became **more stable** with stronger gradient flow even in deeper layers.
+
+###  Insights
+
+* **VGG-Deep** struggles with vanishing gradients, causing poor convergence in very deep setups.
+* **ResNet** overcomes this by allowing gradients to **flow directly** through skip connections.
+* This experiment highlights **why ResNets became the foundation** for modern deep learning architectures.
+
 
 
