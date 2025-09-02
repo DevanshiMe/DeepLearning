@@ -325,6 +325,117 @@ Leverage **pre-trained CNN models** for image classification on the **Food-11 da
   * Depth and architectural complexity
   * Ability to capture hierarchical and intricate features
   * Residual connections facilitating better gradient flow
+ 
+
+## Electric Vehicle CAFV Classification
+
+**Objective:**  
+Classify Washington State electric vehicles for Clean Alternative Fuel Vehicle (CAFV) eligibility using tabular data. Employ classical ML and NN models to benchmark accuracy, speed, and robustness for binary classification.
+
+### Dataset Characteristics
+
+- 220,000+ entries on electric vehicles (VIN, location, model year, electric range, MSRP, etc.).
+- Target: Binary label for **CAFV Eligibility** ("eligible"/"not eligible").
+- Data cleaning:  
+  - Dropped rows with nulls (minimal counts).
+  - Excluded non-informative fields (e.g., DOL Vehicle ID, State).
+  - Handled text normalization and format mismatches.
+  - Removed outliers (vehicles pre-2010, or zero electric range).
+  - Encoded categoricals; normalized electric ranges.
+- Key stats:  
+  - Mean model year ≈ 2021, mean electric range ≈ 47.7, missing values rare.
+
+### Model Architecture
+
+- **Logistic Regression:** Baseline linear classifier, probability output.
+- **Random Forest:** Ensemble of decision trees, bagging, feature randomness.
+- **Support Vector Machine:** Margin maximization, kernel trick.
+- **Neural Network:** MLP with 3 hidden layers (64, 32, 16), ReLU activations, sigmoid output, SGD optimizer.
+
+### Results
+
+- **Random Forest:**  
+  - Test Accuracy: **100%**
+  - Test Loss: **0.0000**
+  - Time: 0.48s  
+- **Logistic Regression:**  
+  - Test Accuracy: 99.7%  
+  - Test Loss: 0.0914  
+  - Time: 0.066s  
+- **SVM:**  
+  - Test Accuracy: 77.8%  
+  - Test Loss: 0.9901  
+  - Time: 42.6s  
+- **Neural Network:**  
+  - Test Accuracy: 76.8%  
+  - Test Loss: 16.3984  
+  - Time: 1.47s  
+
+Visualizations reveal:  
+- King County has the most vehicles.
+- BEVs have notably greater electric range than PHEVs.
+- CAFV-eligible class is ~3x larger than ineligible.
+- Correlation analysis guided feature selection.
+
+### Limitations
+
+- Extreme class imbalance not aggressively countered; model may favor majority.
+- Removing vehicles with low electric range might hide edge cases.
+- SVM and NN underperform, suggesting need for feature engineering or regularization.
+
+### Improvements
+
+- Implement advanced balancing (SMOTE, class weighting).
+- Experiment with deeper NNs or hybrid models.
+- Feature selection/engineering (especially for partially correlated text fields).
+- Hyperparameter optimization for SVM/NN.
+
+
+## OCTMNIST Retinal Image Classification
+
+**Objective:**  
+Classify retinal OCT images into 4 disease classes using convolutional neural networks. Address heavy class imbalance, optimize for accuracy and generalization.
+
+### Dataset Characteristics
+
+- Train: 97,477 images (28x28, grayscale), Val: 10,832, Test: 1,000.
+- Four classes: Highly imbalanced (largest class ~46% of train, smallest ~8%).
+- Moderate contrast: Mean pixel ≈ 0.19, std ≈ 0.20.
+- Data issues: Severe class skew, minimal missing data.
+
+### Model Architecture
+
+- Base CNN:  
+  - 2 conv layers (32→64 filters), max pooling.
+  - Fully connected layers (128, 64), dropout.
+  - Output: 4-class softmax.
+  - BatchNorm on all conv/FC layers (best model).
+  - Dropout (rate 0.5), class weighting for loss.
+- Optimization: SGD (lr=0.01, momentum=0.9), StepLR decay.
+- Data augmentation: Flips, rotations, intensity jitter for minority classes.
+
+### Results
+
+- **Best Model (BatchNorm):**  
+  - **Test Accuracy:** 76.6%  
+  - Test Loss: 0.8016  
+  - Precision: 0.7774 | Recall: 0.7660 | F1: 0.7579  
+  - ROC AUC: 0.93  
+- Training/val curves: Early epochs see sharp gains, plateau after ~10–12 epochs.
+- Confusion matrices show most confusion between minority classes.
+
+### Limitations
+
+- Persistent class imbalance caps highest recall/F1 for rarest class.
+- Input resolution (28x28) may limit subtle feature extraction.
+- Basic augmentation may not capture all real-world distribution shifts.
+
+### Improvements
+
+- Explore resampling (oversample minority or undersample majority classes).
+- Consider higher-res nets (if permissible).
+- Investigate deeper or attention-based architectures (e.g., ResNet, ViT).
+- Fine-tune augmentation and class weighting for low-prevalence classes.
 
 
 
