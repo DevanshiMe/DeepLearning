@@ -141,6 +141,64 @@ These results clearly show the **vanishing gradient effect** as depth increases.
 * This experiment highlights **why ResNets became the foundation** for modern deep learning architectures.
 
 
+## Comparing ResNeXt, ResNet, and VGG
+
+**Objective:**
+Compare the performance, efficiency, and generalization of **ResNeXt**, **ResNet**, and **VGG** on image classification tasks, highlighting the impact of architectural innovations like **cardinality**.
+
+
+### Model Overview
+
+1. **ResNeXt**
+
+   * Uses **cardinality**: multiple parallel paths within each block
+   * Learns **more complex features** efficiently
+   * Outperforms ResNet and VGG in both accuracy and generalization
+
+2. **ResNet**
+
+   * Focuses on depth with **residual connections**
+   * Avoids vanishing gradients but lacks cardinality
+
+3. **VGG**
+
+   * Deep stack of layers
+   * No residual connections or cardinality, making it less efficient for complex feature learning
+
+
+### Key Challenges
+
+1. **Selecting Cardinality**
+
+   * Optimal cardinality value is crucial for balancing performance and computational cost
+
+2. **Learning Rate Adjustments**
+
+   * Complex architectures require careful tuning for stable convergence
+
+3. **Modifying Architecture**
+
+   * Adding depth and cardinality increases training time and optimization difficulty
+
+
+### Experimental Results
+
+| Model     | Train Accuracy | Validation Accuracy | Train Loss | Validation Loss | Notes                                                          |
+| --------- | -------------- | ------------------- | ---------- | --------------- | -------------------------------------------------------------- |
+| VGG-16    | 99.44%         | 89.40%              | 0.0352     | 1.2873          | Overfitting (high train accuracy, high val loss)               |
+| ResNet-18 | 80.97%         | 89.89%              | 0.4212     | 0.5344          | Lower train accuracy, stable validation                        |
+| ResNeXt   | 87%            | 90.61%              | —          | 0.4661          | Best balance of accuracy, generalization, and train efficiency |
+
+
+### Insights
+
+* **ResNeXt** achieves the **highest validation accuracy (90.61%)** and best generalization due to cardinality.
+* **VGG-16** overfits the training data despite low train loss.
+* **ResNet-18** trains efficiently but has slightly lower validation performance compared to ResNeXt.
+* ResNeXt demonstrates how **parallel paths (cardinality)** improve feature learning and model efficiency over traditional deep CNNs.
+
+
+
 ## Time-Series Forecasting with LSTM
 
 **Objective:**
