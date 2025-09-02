@@ -1,5 +1,21 @@
 # Deep Learning
 This repository explores different deep learning architectures. It currently includes these projects:
+
+
+# Table of Contents
+
+1. [Transformer for Text Classification](#transformer-for-text-classification)
+2. [Autoencoders for Anomaly Detection](#autoencoders-for-anomaly-detection)
+3. [vgg-16-version-c-vs-resnet-18-for-image-classification](#vgg-16-version-c-vs-resnet-18-for-image-classification)
+4. [Vanishing Gradient Problem in Deep CNNs](#vanishing-gradient-problem-in-deep-cnns)
+5. [Comparing ResNeXt, ResNet, and VGG](#comparing-resnext-resnet-and-vgg)
+6. [Time-Series Forecasting with LSTM](#time-series-forecasting-with-lstm)
+7. [Sentiment Analysis using LSTM](#sentiment-analysis-using-lstm)
+8. [Transfer Learning with Pre-trained Models](#transfer-learning-with-pre-trained-models)
+9. [Electric Vehicle CAFV Classification](#electric-vehicle-cafv-classification)
+10. [OCTMNIST Retinal Image Classification](#octmnist-retinal-image-classification)
+
+
 ## Transformer for Text Classification
 
 **Objective:**
